@@ -50,3 +50,24 @@ WHERE price >= 200 AND price <= 100;                                    -- 0
 /* Observação: nenhum valor satisfaz "maior ou igual a 200" e "menor ou igual
    a 100" simultaneamente. O SQLite não retorna erro, apenas resultado vazio.
    Ao usar BETWEEN, o menor valor deve vir primeiro. */
+
+
+/* -----------------------------------------------------------------------------
+   3. EXTREMOS DO INTERVALO
+   Pergunta: quantos itens custam exatamente R$ 100 ou R$ 200, e como isso
+   explica a diferença entre BETWEEN e os operadores > e <?
+----------------------------------------------------------------------------- */
+
+-- Intervalo sem os extremos
+SELECT order_id, price
+FROM olist_order_items_dataset
+WHERE price > 100 AND price < 200;                                      -- 26.840
+
+-- Itens exatamente nos extremos
+SELECT order_id, price
+FROM olist_order_items_dataset
+WHERE price = 100 OR price = 200;                                       -- 271
+
+/* Validação: 27.111 (BETWEEN) - 26.840 (> e <) = 271, igual ao número de itens
+   com preço exatamente igual a 100 ou 200. Confirma que BETWEEN inclui os
+   extremos, enquanto > e < os excluem. */
