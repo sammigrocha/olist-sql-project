@@ -71,3 +71,19 @@ WHERE customer_city = 'paraty';                                         -- 19
    - Em contagens agrupadas por cidade, as duas grafias seriam tratadas como
      cidades distintas e dividiriam o total.
    Pendência: padronizar a grafia na etapa de limpeza de dados. */
+
+
+/* -----------------------------------------------------------------------------
+   4. TAMANHO DE TEXTO (LENGTH)
+   Pergunta: quais cidades do Rio de Janeiro têm os nomes mais longos?
+----------------------------------------------------------------------------- */
+
+SELECT customer_city, LENGTH(customer_city) AS tamanho
+FROM olist_customers_dataset
+WHERE customer_state = 'RJ'
+ORDER BY LENGTH(customer_city) DESC
+LIMIT 5;                                                                -- 5 | maior: 29 caracteres
+
+/* Resultado: 'sao jose do vale do rio preto' (29 caracteres) é o nome mais
+   longo entre os clientes do RJ. O critério do ORDER BY deve medir a mesma
+   coluna exibida no SELECT (customer_city). */
