@@ -65,6 +65,8 @@ A pasta `data/` (arquivos CSV e banco `olist.db`) existe apenas no ambiente loca
 | `11_limit.sql` | rankings por preço e data |
 | `12_aliases.sql` | apelidos de colunas |
 | `13_funcoes_de_texto.sql` | funções de texto e inconsistências de grafia |
+| `14_verificacao_de_espacos.sql` | verificação de espaços sobrando e produtos sem categoria |
+| `15_padronizacao_de_texto.sql` | padronização de grafia de cidades com REPLACE |
 
 ## Principais achados até agora
 
@@ -79,6 +81,8 @@ A pasta `data/` (arquivos CSV e banco `olist.db`) existe apenas no ambiente loca
 - 8 pedidos estão como `delivered` sem data de entrega.
 - 6 pedidos com data de entrega estão como `canceled`.
 - A cidade de Paraty aparece com duas grafias (`parati`, 13 clientes, e `paraty`, 19), o que exige padronização antes de análises por cidade.
+- Nenhum espaço sobrando foi encontrado nas colunas de cidade, estado e categoria verificadas.
+- 610 produtos (cerca de 2% dos 32.951) não possuem categoria informada.
 
 ## Limitações
 
